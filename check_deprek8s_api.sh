@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# v0.1.7
+# script name: check_deprek8s_api.sh
+# v0.1.7 20200223
 # Script to generate a yaml file for each object in a namespace
 # and then use confest binary to test against deprek8.rego policies
 
@@ -28,14 +29,24 @@ else
 fi
 OUTPUT_FILE=${SCRIPT_PATH}/${NAMESPACE}_output.txt
 
-# check if kubectl is installed
-if ! [ -x "$(command -v kubectl)" ]
-then
-  echo -e "Error: kubectl is not installed.\n"
-  exit 1
-fi
 
 # Funtion definition
+
+function check_kubectl_exist () {
+    if ! [ -x "$(command -v kubectl)" ]
+    then
+        echo -e "Error: kubectl is not installed.\n"
+        exit 1
+    fi
+}
+
+function check_namespace_exist () {
+    if ! kubectl get ns $NAMESPACE > /dev/null 2>&1 
+    then
+        echo -e "Error: the namespace $NAMESPACE does not exist in the cluster...\n"
+        exit 3
+    fi
+}
 
 function download_conftest () {
     echo -e "Downloading conftest binary..."
@@ -46,7 +57,7 @@ function download_conftest () {
     else
         echo -e "Error: download failed..."
         rm -rf $CONFTEST_DIR 2> /dev/null
-        exit 3
+        exit 4
     fi
     echo -e "...done\n"
 }
@@ -59,7 +70,7 @@ function download_deprek8 () {
     else
         echo -e "Error: download failed..."
         rm -rf $DEPREK8_POLICY 2> /dev/null
-        exit 4
+        exit 5
     fi
 }
 
@@ -90,6 +101,12 @@ function test_yaml_against_policy () {
 }
 
 ## main
+
+# check kubectl binary exists
+check_kubectl_exist
+
+# check namespace exist
+check_namespace_exist
 
 # check if deprek8 policy is in place
 if [ ! -f "$DEPREK8_POLICY" ]
