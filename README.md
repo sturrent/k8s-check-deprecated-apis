@@ -1,5 +1,5 @@
 # k8s-check-depricated-apis
-Script to generate a yaml file for each object in a namespace and then use confest utility to test against deprek8.rego policies.
+Script to generate a yaml file for each object in a namespace and then use conftest utility to test against deprek8.rego policies.
 
 ## Usage
 ```
@@ -7,18 +7,18 @@ Script to generate a yaml file for each object in a namespace and then use confe
 mkdir cluster_a1
 cd cluster_a1
 
-# Donwload the script
+# Download the script
 curl https://raw.githubusercontent.com/sturrent/k8s-check-depricated-apis/master/check_deprek8s_api.sh -o check_deprek8s_api.sh
 chmod u+x check_deprek8s_api.sh
 
 # Run the script providing the namespace you want to review
 bash check_deprek8s_api.sh kube-system
 
-# Output will show the script progress and if there are any failures (full output wil be saved in <NAMESPACE>_output.txt)
+# Output will show the script progress and any existing failures (full output will be saved in the file <NAMESPACE>_output.txt)
 ```
 
-If no namespace is provided the script will use the default one.
-Here is an example of the execution against kube-system namespace:
+If no namespace is provided, the script will use the default one.
+The following is an example of the execution against kube-system namespace:
 ```
 :~/cluster_a1$ curl https://raw.githubusercontent.com/sturrent/k8s-check-depricated-apis/master/check_deprek8s_api.sh -o check_deprek8s_api.sh
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -41,7 +41,7 @@ Getting yaml for each object in kube-system namespace...
 |
 ...done
 
-The fallowing failures have been found for namespace kube-system (full output avaliable in /home/sturrent/cluster_a1/kube-system_output.txt):
+The following failures have been found for namespace kube-system (full output avaliable in /home/sturrent/cluster_a1/kube-system_output.txt):
 
 FAIL - /home/sturrent/cluster_a1/out_dir/kube-system_deployment.extensions/calico-typha-horizontal-autoscaler.yaml - Deployment/calico-typha-horizontal-autoscaler: API extensions/v1beta1 for Deployment is no longer served by default, use apps/v1 instead.
 FAIL - /home/sturrent/cluster_a1/out_dir/kube-system_deployment.extensions/calico-typha.yaml - Deployment/calico-typha: API extensions/v1beta1 for Deployment is no longer served by default, use apps/v1 instead.
@@ -54,4 +54,4 @@ FAIL - /home/sturrent/cluster_a1/out_dir/kube-system_deployment.extensions/tunne
 ```
 
 ## Credits
-This script was inspired by the article [Testing for Deprecated Kubernetes APIs](https://thepracticalsysadmin.com/testing-for-deprecated-kubernetes-apis/) by Josh Reichardt and it leverage the [conftest](https://github.com/instrumenta/conftest) utility as well as the Kubernetes depricated API policy [deprek8](https://github.com/naquada/deprek8)
+This script was inspired by the article [Testing for Deprecated Kubernetes APIs](https://thepracticalsysadmin.com/testing-for-deprecated-kubernetes-apis/) by Josh Reichardt and it leverages the [conftest](https://github.com/instrumenta/conftest) utility as well as the Kubernetes depricated API policy [deprek8](https://github.com/naquada/deprek8).

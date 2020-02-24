@@ -18,7 +18,7 @@ SPIN='-\|/'
 # Argument validation
 if [ "$#" -gt 1 ]
 then
-    echo -e "only the namespace is expected as argument...\n"
+    echo -e "Only one namespace is expected as argument...\n"
     echo -e "Usage: bash ${SCRIPT_PATH}/${SCRIPT_NAME} <NAMESPACE>\n"
 	exit 1
 elif [ -z "$1" ]
@@ -134,10 +134,10 @@ test_yaml_against_policy
 
 if $(grep -q FAIL $OUTPUT_FILE)
 then
-    echo -e "The fallowing failures have been found for namespace $NAMESPACE (full output avaliable in ${OUTPUT_FILE}):\n"
+    echo -e "The following failures have been found for namespace $NAMESPACE (full output avaliable in ${OUTPUT_FILE}):\n"
     grep FAIL $OUTPUT_FILE
 else
-    echo -e "No issues found for namespace $NAMESPACE, full result avaliable in file $OUTPUT_FILE"
+    echo -e "No issues were found for namespace $NAMESPACE, full result avaliable in file $OUTPUT_FILE"
 fi
 
 exit 0
