@@ -1,5 +1,5 @@
 # k8s-check-depricated-apis
-Script to generate a yaml file for each object in a namespace and then use confest utility to test against deprek8.rego policies
+Script to generate a yaml file for each object in a namespace and then use confest utility to test against deprek8.rego policies.
 
 ## Usage
 ```
