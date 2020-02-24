@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # script name: check_deprek8s_api.sh
-# v0.1.7 20200223
+# v0.1.9 20200224
 # Script to generate a yaml file for each object in a namespace
 # and then use confest binary to test against deprek8.rego policies
 
@@ -12,7 +12,7 @@ OUTPUT_DIR=${SCRIPT_PATH}/out_dir
 DEPREK8_POLICY=${SCRIPT_PATH}/deprek8.rego
 CONFTEST_DIR=${SCRIPT_PATH}/conftest
 CONFTEST_BIN=${CONFTEST_DIR}/conftest
-OBJECTS_LIST="pods,pvc,configmap,serviceaccount,ingress,service,deployment,statefulset,hpa,job,cronjob"
+OBJECTS_LIST="pods,pvc,configmap,serviceaccount,ingress,service,deployment,replicaset,statefulset,hpa,job,cronjob"
 SPIN='-\|/'
 
 # Argument validation
