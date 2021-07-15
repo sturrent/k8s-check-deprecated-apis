@@ -17,7 +17,6 @@ bash check_deprecated_apis.sh
 # Output will show the script progress and any existing failures
 ```
 
-If no namespace is provided, the script will use the default one.
 The following is an example of the execution against kube-system namespace:
 ```
 :~/cluster_a1$ curl https://raw.githubusercontent.com/sturrent/k8s-check-deprecated-apis/master/check_deprecated_apis.sh -o check_deprecated_apis.sh
