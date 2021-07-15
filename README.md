@@ -1,5 +1,5 @@
 # k8s-check-deprecated-apis
-Script to generate a yaml file for each object in a namespace and then use conftest utility to test against deprek8.rego policies.
+Script to generate a yaml file for each object in a namespace and then use pluto utility to check for depricated APIs.
 
 ## Usage
 ```
@@ -8,11 +8,11 @@ mkdir cluster_a1
 cd cluster_a1
 
 # Download the script
-curl https://raw.githubusercontent.com/sturrent/k8s-check-deprecated-apis/master/check_deprek8s_api.sh -o check_deprek8s_api.sh
-chmod u+x check_deprek8s_api.sh
+curl https://raw.githubusercontent.com/sturrent/k8s-check-deprecated-apis/master/check_deprecated_apis.sh -o check_deprecated_apis.sh
+chmod u+x check_deprecated_apis.sh
 
 # Run the script providing the namespace you want to review
-bash check_deprek8s_api.sh kube-system
+bash check_deprecated_apis.sh kube-system
 
 # Output will show the script progress and any existing failures (full output will be saved in the file <NAMESPACE>_output.txt)
 ```
@@ -20,12 +20,12 @@ bash check_deprek8s_api.sh kube-system
 If no namespace is provided, the script will use the default one.
 The following is an example of the execution against kube-system namespace:
 ```
-:~/cluster_a1$ curl https://raw.githubusercontent.com/sturrent/k8s-check-deprecated-apis/master/check_deprek8s_api.sh -o check_deprek8s_api.sh
+:~/cluster_a1$ curl https://raw.githubusercontent.com/sturrent/k8s-check-deprecated-apis/master/check_deprecated_apis.sh -o check_deprecated_apis.sh
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100  3566  100  3566    0     0    602      0  0:00:05  0:00:05 --:--:--  1048
-:~/cluster_a1$ chmod u+x check_deprek8s_api.sh
-:~/cluster_a1$ bash check_deprek8s_api.sh kube-system
+:~/cluster_a1$ chmod u+x check_deprecated_apis.sh
+:~/cluster_a1$ bash check_deprecated_apis.sh kube-system
 Downloading deprek8 policy...
 /home/sturrent/cluster_a1/deprek8.rego 100%[=========================================================================>]   4.35K  --.-KB/s    in 0s
 ...done
