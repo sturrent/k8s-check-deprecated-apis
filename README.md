@@ -24,19 +24,19 @@ The following is an example of the execution against kube-system namespace:
                                  Dload  Upload   Total   Spent    Left  Speed
 100  3566  100  3566    0     0    602      0  0:00:05  0:00:05 --:--:--  1048
 :~/cluster_a1$ chmod u+x check_deprecated_apis.sh
-:~/cluster_a1$ bash check-deprecated-api.sh
-+++Downloading pluto binary...
-/home/sturrent/k8s-check-deprecated-apis/pluto/plut 100%[===================================================================================================================>]   8.34M  6.70MB/s    in 1.2s
+:~/cluster_a1$ bash check_deprecated_apis.sh
++++ Downloading pluto binary...
+/home/sturrent/aks-net1/pluto/pluto_4.2.0_linux_amd 100%[===================================================================================================================>]   8.34M  6.67MB/s    in 1.2s
 ...done
 
-+++Using the following context to connect to cluster:
++++ Using the following context to connect to cluster:
 
 --------------------------------------------------------------------------
 NAME      CLUSTER   AUTHINFO
 aks-net1  aks-net1  clusterUser_aks-net1-rg_aks-net1
 --------------------------------------------------------------------------
 
-+++Collecting data in the following namespaces:
++++ Collecting data in the following namespaces:
 
 default
 ingress-2
@@ -54,7 +54,7 @@ hello-world-one     wp1         Ingress   extensions/v1beta1   networking.k8s.io
 wordpress-ingress   wp1         Ingress   extensions/v1beta1   networking.k8s.io/v1   true         v1.14.0         false     v1.22.0
 
 
-----------------------Done-------------------------
+----------------------Done----------------------------
 ```
 
 ## Credits
