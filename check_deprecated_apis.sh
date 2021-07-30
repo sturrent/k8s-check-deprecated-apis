@@ -36,7 +36,7 @@ function get_current_context () {
 function download_pluto () {
     echo -e "+++ Downloading pluto binary..."
     mkdir -p $PLUTO_DIR 2> /dev/null
-    if wget -q --timeout=240 --show-progress https://github.com/FairwindsOps/pluto/releases/download/v4.2.0/pluto_4.2.0_linux_amd64.tar.gz -O ${PLUTO_DIR}/${PLUTO_TAR}
+    if wget -q --timeout=240 https://github.com/FairwindsOps/pluto/releases/download/v4.2.0/pluto_4.2.0_linux_amd64.tar.gz -O ${PLUTO_DIR}/${PLUTO_TAR}
     then
         tar xzf ${PLUTO_DIR}/${PLUTO_TAR} -C $PLUTO_DIR
     else
